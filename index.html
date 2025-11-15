@@ -1,0 +1,46 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prediction Web Tool</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Prediction Web Tool</h1>
+
+    <form id="uploadForm" class="card">
+      <label>Upload Matrix 1</label>
+      <input type="file" id="matrix1" />
+      <p class="note">Example format: CSV, TSV</p>
+
+      <label>Upload Matrix 2</label>
+      <input type="file" id="matrix2" />
+      <p class="note">Example format: CSV, TSV</p>
+
+      <button type="submit" class="btn">Run Analysis</button>
+      <div id="processing" class="processing hidden">Processing your data...</div>
+    </form>
+
+    <div id="results" class="hidden card">
+      <h2>Results</h2>
+      <p id="summary"></p>
+
+      <button class="btn-outline">Download Predictions (CSV)</button>
+      <button class="btn-outline">Download Figures (PNG)</button>
+      <button class="btn-outline">Download Log File</button>
+
+      <h3>Visualization Preview</h3>
+      <div class="plot-preview">[ Insert plot here ]</div>
+
+      <button id="restart" class="btn">Start New Analysis</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- styles.css -->
