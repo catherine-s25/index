@@ -30,7 +30,7 @@ CDEnhancer <- function(eRNA, frac, type)
 }
 
 # ==============================
-# ✅ NEW: Command-line interface
+# NEW: Command-line interface
 # ==============================
 
 args <- commandArgs(trailingOnly = TRUE)
