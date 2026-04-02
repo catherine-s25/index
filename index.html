@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,21 +10,31 @@
   <div class="container">
     <h1>Prediction Web Tool</h1>
 
-    <form id="uploadForm" class="card">
-      <label>Upload the eRNA file: </label>
-      <input type="file" id="matrix1" />
-      <p class="note">Example format: rds</p>
-
-      <label>Upload Cell Fraction file: </label>
-      <input type="file" id="matrix2" />
-      <p class="note">Example format: rds</p>
-
-      <label>Upload condition file: </label>
-      <input type="file" id="matrix3" />
-      <p class="note">Example format: rds</p>
+    <form id="uploadForm" class="card" method="POST" enctype="multipart/form-data">
       
+      <!-- eRNA (matrix1) -->
+      <label>Upload the eRNA file (bulk_log_example.rds): </label>
+      <input type="file" id="matrix1" name="eRNA" accept=".rds" required />
+      <p class="note">Parameter: eRNA</p>
+
+      <!-- frac (matrix2) -->
+      <label>Upload Cell Fraction file (cell_fraction_example.rds): </label>
+      <input type="file" id="matrix2" name="frac" accept=".rds" required />
+      <p class="note">Parameter: frac</p>
+
+      <!-- type (matrix3) -->
+      <label>Upload condition file (condition_example.rds): </label>
+      <input type="file" id="matrix3" name="type" accept=".rds" required />
+      <p class="note">Parameter: type</p>
+
+      <!-- Hidden field to indicate R script -->
+      <input type="hidden" name="script" value="example_runction.r" />
+
       <button type="submit" class="btn">Run Analysis</button>
-      <div id="processing" class="processing hidden">Processing your data...</div>
+
+      <div id="processing" class="processing hidden">
+        Processing your data using example_runction.r...
+      </div>
     </form>
 
     <div id="results" class="hidden card">
@@ -44,7 +53,15 @@
   </div>
 
   <script src="script.js"></script>
+
+  <!-- Optional: basic processing behavior -->
+  <script>
+    const form = document.getElementById("uploadForm");
+    const processing = document.getElementById("processing");
+
+    form.addEventListener("submit", function() {
+      processing.classList.remove("hidden");
+    });
+  </script>
 </body>
 </html>
-
-<!-- styles.css -->
