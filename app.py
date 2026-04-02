@@ -3,14 +3,14 @@ import subprocess
 import os
 import json
 
-app = Flask(__name__, static_folder="static")
+app = Flask(__name__, static_folder="") # <-- empty string means current folder
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/")
 def serve_index():
-    return send_from_directory("static", "index.html")
+    return send_from_directory(".", "index.html")
 
 
 @app.route("/run", methods=["POST"])
